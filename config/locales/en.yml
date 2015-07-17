@@ -81,3 +81,8 @@ en:
   title: "You don't finshed a exam. check it please :"
   category: "Category"
   start_new: "Start new"
+  import_succes: "Users imported."
+  import_title: "Import that file"
+  import_CSV: "Import CSV"
+  download: "Download"
+  import_fail: "Unknown file type: "

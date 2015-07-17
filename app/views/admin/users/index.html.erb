@@ -13,3 +13,16 @@
 <% else %>
   <p><%= t "search_result" %><%= params[:search] %></p>
 <% end %>
+
+<h4><%= t "import_title" %></h4>
+<%= form_tag admin_imports_path, url: admin_imports_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag t("import_CSV") %>
+<% end %>
+
+<div>
+  <p>
+    <%= t "download" %>
+    <%= link_to "CSV", admin_users_path(format: "csv") %>
+  </p>
+</div>
