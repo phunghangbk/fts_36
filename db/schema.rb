@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709090755) do
+ActiveRecord::Schema.define(version: 20150721144604) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 20150709090755) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "access_token"
+    t.string   "facebook_secret"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

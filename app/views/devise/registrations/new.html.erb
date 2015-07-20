@@ -31,6 +31,8 @@
       <p>
         <%= f.submit t("submit"), class: "btn btn-primary" %>
       </p>
-    </div>  
+      <br>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    </div>
   </div>
 <% end %>

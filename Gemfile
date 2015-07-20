@@ -15,6 +15,13 @@ gem "sidekiq"
 gem "whenever", require: false
 gem "roo"
 gem "iconv", "~> 1.0.3"
+gem "carrierwave"
+gem "fog"
+gem "omniauth"
+gem "omniauth-facebook", "1.4.0"
+gem "fb_graph"
+gem "paperclip", "~> 4.1"
+gem "sqlite3"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets

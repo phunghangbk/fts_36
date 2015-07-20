@@ -11,6 +11,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require "csv"
 require "iconv"
+require "omniauth-facebook"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
