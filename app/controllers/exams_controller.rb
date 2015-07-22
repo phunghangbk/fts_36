@@ -25,7 +25,7 @@ class ExamsController < ApplicationController
       started_at = Time.zone.now
       @exam.update_attributes status: Settings.user.view, started_at: started_at
     end
-    @timeleft = @exam.category.max_time * Settings.user.maximum - (Time.zone.now - @exam.started_at).to_i
+    @timeleft = @exam.category.max_time * 60 - (Time.zone.now - @exam.started_at).to_i
   end
 
   def update

@@ -5,6 +5,7 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
+      cannot [:create, :update], Exam
     else
       can :update, User, id: user.id
       can :create, Exam

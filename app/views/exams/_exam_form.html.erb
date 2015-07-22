@@ -1,3 +1,4 @@
+<hr>
 <div class="row">
   <div class="col-md-12">
     <%= f.text_field :question_id, hidden: :true, readonly: :true %>
@@ -5,13 +6,13 @@
     <br>
   </div>
   <div class="col-md-12">
-    <table class="table table-bordered">
-      <% f.object.question.answers.each do |answer| %>
-        <tr>
-          <td><%= f.radio_button :answer_id, answer.id %></td>
-          <td><%= answer.content %></td>
-        </tr>
-      <% end %>
-    </table>
+    <% f.object.question.answers.each_with_index do |answer,index| %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :answer_id, answer.id %>
+          <%= answer.content %>
+        </label>
+      </div>
+    <% end %>
   </div>
 </div>

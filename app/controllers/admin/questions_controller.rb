@@ -8,13 +8,13 @@ class Admin::QuestionsController < ApplicationController
   def new
     @question = Question.new
     @categories = Category.all
-    Settings.user.answer_number.times {@question.answers.build}
+    4.times {@question.answers.build}
   end
 
   def create
     @question = Question.new question_params
     if @question.save
-      flash[:success] = t "create_sucess"
+      flash[:success] = t "create_success"
       redirect_to admin_questions_path
     else
       @categories = Category.all

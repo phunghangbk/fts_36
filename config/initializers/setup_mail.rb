@@ -1,8 +1,8 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   address: "smtp.gmail.com",
-  port: ENV["port"],
-  domain: ENV["domain"],
+  port: 587,
+  domain: "gmail.com",
   user_name: ENV["gmail_username"],
   password: ENV["gmail_password"],
   authentication: "plain",

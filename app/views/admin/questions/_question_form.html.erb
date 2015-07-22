@@ -1,4 +1,6 @@
 <%= form_for [:admin, @question] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <h1><%= t "edit_question" %></h1>
   <table class="table table-bordered">
     <tr>
       <td>Categories</td>
@@ -14,7 +16,10 @@
     <%= f.fields_for :answers do |builder| %>
       <%= render "answer_fields", f: builder %>
     <% end %>
+    <tr>
+      <td></td>
+      <td><%= link_to_add_fields t("add_answer"), f, :answers %></td>
+      </tr>
   </table>
-  <p><%= link_to_add_fields t(:add_answer), f, :answers %></p>
-  <%= f.submit t(:submit), class: "btn btn-primary", name: "btn_submit" %>
+  <%= f.submit t("submit"), class: "btn btn-primary", name: "btn_submit" %>
 <% end %>

@@ -8,17 +8,17 @@ class Exam < ActiveRecord::Base
   accepts_nested_attributes_for :results, allow_destroy: true
 
   before_create :create_default_status, :random_questions
-  before_update :update_result, :update_status
+  before_update :update_result, :send_result_mail
   after_create :remind_user
   
   scope :order_created, ->{order created_at: :desc}
   scope :faker_exam, ->{where(status: Settings.user.start)
-    .where "created_at <= ?", Settings.user.number_weeks.weeks.ago}
+    .where "created_at <= ?", 1.weeks.ago}
 
   def time_out?
     if started_at
       execute_time = (Time.zone.now - self.started_at).to_i
-      max_time = self.category.max_time * Settings.user.maximum
+      max_time = self.category.max_time * 60
       execute_time >= max_time
     end
   end
@@ -40,11 +40,11 @@ class Exam < ActiveRecord::Base
     self.mark = "#{mark.to_s}/#{self.category.max_question}"
   end
 
-  def update_status
+  def send_result_mail
     ResultMailer.result_exam(self).deliver if time_out?
   end
 
   def remind_user
-    RemindUserWorker.perform_in Settings.user.time.hours, id
+    RemindUserWorker.perform_in 2.hours, id
   end
 end
